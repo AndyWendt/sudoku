@@ -12,7 +12,7 @@ describe Puzzle do
 
   context 'when condition' do
     it 'succeeds' do
-      pending 'Not implemented'
+      expect(true).to eq(true)
     end
   end
 end
