@@ -30,6 +30,6 @@ class Solver
   end
 
   def combined_values(cell)
-    [1,2,6,7,8,9]
+    row_values(cell) | column_values(cell) | area_values(cell)
   end
 end
