@@ -2,17 +2,8 @@ require 'rspec'
 require './src/puzzle'
 
 describe Puzzle do
-  before do
-    # Do nothing
-  end
-
-  after do
-    # Do nothing
-  end
-
-  context 'when condition' do
-    it 'succeeds' do
-      expect(true).to eq(true)
-    end
+  it 'creates a puzzle' do
+    result = Puzzle.new.generate
+    expect(result).to eq('puzzle')
   end
 end
