@@ -1,6 +1,6 @@
 class Solver
   def initialize(puzzle)
-    @puzzle = puzzle
+    @puzzle = puzzle.generate
   end
 
   def solution
@@ -12,6 +12,6 @@ class Solver
   end
 
   def potential_cell_values(cell)
-    [2]
+    [@puzzle.slice(cell).to_i]
   end
 end
