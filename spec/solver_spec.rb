@@ -25,4 +25,11 @@ describe Solver do
   it 'determines if a puzzle is solvable' do
     expect(Solver.new(puzzle).solvable).to eq(solvable)
   end
+
+  describe 'possible cell values' do
+    let(:cell_three_potential_cell_values) {[2]}
+    it 'returns the cell value if solved' do
+      expect(Solver.new(puzzle).potential_cell_values(3)).to eq(cell_three_potential_cell_values)
+    end
+  end
 end

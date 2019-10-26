@@ -10,4 +10,8 @@ class Solver
   def solvable
     true
   end
+
+  def potential_cell_values(cell)
+    [2]
+  end
 end
