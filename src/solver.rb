@@ -13,7 +13,7 @@ class Solver
 
   def potential_cell_values(cell)
     cell_value = Integer(@puzzle.slice(cell), exception: false)
-    return [3,4,5] if cell == 0
+    return (1..9).to_a - combined_values(cell) if cell == 0
     [cell_value]
   end
 
