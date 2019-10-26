@@ -1,4 +1,5 @@
 require 'rspec'
+require './src/puzzle'
 
 describe Puzzle do
   before do
