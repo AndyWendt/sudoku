@@ -18,7 +18,9 @@ class Solver
   end
 
   def row_values(cell)
-    [1,2,6,7]
+    @puzzle.slice(0, 9).split('')
+        .reject {|character| character == '.' }
+        .map{|character| character.to_i }.sort
   end
 
   def column_values(cell)
