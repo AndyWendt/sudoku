@@ -1,0 +1,45 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/ruby:2.6.5
+        environment: # environment variables for primary container
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+    steps:
+      - checkout
+      - run:
+          name: Which bundler?
+          command: bundle -v
+
+      # Restore bundle cache
+      # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
+      - restore_cache:
+          keys:
+            - sodoku-bundle-{{ checksum "Gemfile.lock" }}
+            - sodoku-bundle-
+
+      - run: # Install Ruby dependencies
+          name: Bundle Install
+          command: bundle check --path vendor/bundle || bundle install --deployment
+
+      # Store bundle cache for Ruby dependencies
+      - save_cache:
+          key: sodoku-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      - run:
+          name: Run rspec in parallel
+          command: |
+            bundle exec rspec --profile 10 \
+                              --format RspecJunitFormatter \
+                              --out test_results/rspec.xml \
+                              --format progress \
+                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+
+      # Save test results for timing analysis
+      - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+          path: test_results
+      # See https://circleci.com/docs/2.0/deployment-integrations/ for example deploy configs
