@@ -13,6 +13,23 @@ class Solver
 
   def potential_cell_values(cell)
     cell_value = Integer(@puzzle.slice(cell), exception: false)
+    return [3,4,5] if cell == 0
     [cell_value]
+  end
+
+  def row_values(cell)
+    [1,2,6,7]
+  end
+
+  def column_values(cell)
+    [1,6,7,8]
+  end
+
+  def area_values(cell)
+    [1,6,8,9]
+  end
+
+  def combined_values(cell)
+    [1,2,6,7,8,9]
   end
 end

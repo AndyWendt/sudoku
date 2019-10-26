@@ -28,8 +28,49 @@ describe Solver do
 
   describe 'possible cell values' do
     let(:cell_three_potential_cell_values) {[2]}
-    it 'returns the cell value if solved' do
+    let(:cell_zero_potential_cell_values) {[3,4,5]}
+
+    it 'returns the cell value if it is numeric' do
       expect(Solver.new(puzzle).potential_cell_values(3)).to eq(cell_three_potential_cell_values)
+    end
+
+    it 'returns the potential cell values' do
+      expect(Solver.new(puzzle).potential_cell_values(0)).to eq(cell_zero_potential_cell_values)
+    end
+  end
+
+  describe 'cell row values' do
+    let(:cell_zero_row_values) {[1,2,6,7]}
+    it 'returns the values for a row' do
+      expect(Solver.new(puzzle).row_values(0)).to eq(cell_zero_row_values)
+    end
+  end
+
+  describe 'cell row values' do
+    let(:cell_zero_row_values) {[1,2,6,7]}
+    it 'returns the values for a row' do
+      expect(Solver.new(puzzle).row_values(0)).to eq(cell_zero_row_values)
+    end
+  end
+
+  describe 'column values' do
+    let(:cell_zero_column_values) {[1,6,7,8]}
+    it 'returns the values for a column' do
+      expect(Solver.new(puzzle).column_values(0)).to eq(cell_zero_column_values)
+    end
+  end
+
+  describe 'area values' do
+    let(:cell_zero_area_values) {[1,6,8,9]}
+    it 'returns the values for an area' do
+      expect(Solver.new(puzzle).area_values(0)).to eq(cell_zero_area_values)
+    end
+  end
+
+  describe 'combined values' do
+    let(:cell_zero_combined_values) {[1,2,6,7,8,9]}
+    it 'returns all taken values for a cell' do
+      expect(Solver.new(puzzle).combined_values(0)).to eq(cell_zero_combined_values)
     end
   end
 end
