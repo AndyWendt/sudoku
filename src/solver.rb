@@ -12,6 +12,7 @@ class Solver
   end
 
   def potential_cell_values(cell)
-    [@puzzle.slice(cell).to_i]
+    cell_value = Integer(@puzzle.slice(cell), exception: false)
+    [cell_value]
   end
 end
