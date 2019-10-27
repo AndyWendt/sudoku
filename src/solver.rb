@@ -24,15 +24,11 @@ class Solver
   end
 
   def column_values(cell)
-    column_cell_locations(cell)
-      .map {|location| @puzzle[location] }
-      .reject {|character| character == '.' }
-      .map{|character| character.to_i }
-      .sort
+    retrieve_cell_values(column_cell_locations(cell))
   end
 
   def area_values(cell)
-    [1,6,8,9]
+    retrieve_cell_values(area_cell_locations(cell))
   end
 
   def combined_values(cell)
@@ -49,5 +45,16 @@ class Solver
       cells.push(start_cell)
     end
     cells
+  end
+
+  def area_cell_locations(cell)
+    [cell+1, cell+2, cell+9, cell+10, cell+11, cell+18, cell+19, cell+20]
+  end
+
+  def retrieve_cell_values(locations)
+    locations.map {|location| @puzzle[location] }
+        .reject {|character| character == '.' }
+        .map{|character| character.to_i }
+        .sort
   end
 end
