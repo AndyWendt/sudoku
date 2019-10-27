@@ -1,5 +1,7 @@
 class Puzzle
-  def generate
-    @puzzle ||= '2.............62....1....7...6..8...3...9...7...6..4...4....8....52.............3'
+  attr_reader :original
+
+  def initialize(puzzle)
+    @original = puzzle
   end
 end
