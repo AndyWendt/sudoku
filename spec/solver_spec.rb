@@ -19,7 +19,7 @@ def run_puzzles(puzzle)
   end
 
   puzzle = Puzzle.new(puzzle_string)
-  pci = PuzzleCellIntelligence.new(puzzle, Helper.new)
+  pci = PuzzleCellIntelligence.new( Helper.new)
   heuristics = [
       InconsistencyInsufficiencyHeuristic.new(puzzle, pci)
   ]
