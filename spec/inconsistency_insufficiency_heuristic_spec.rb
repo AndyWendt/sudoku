@@ -15,10 +15,10 @@ describe InconsistencyInsufficiencyHeuristic do
     pci
   end
 
-  subject { InconsistencyInsufficiencyHeuristic.new(puzzle, puzzle_cell_intelligence) }
+  subject { InconsistencyInsufficiencyHeuristic.new(puzzle_cell_intelligence) }
 
   it 'executes' do
-    subject.execute(cell)
+    subject.execute(puzzle, cell)
     expect(puzzle.get(0).to_i).to eq(4)
   end
 end
