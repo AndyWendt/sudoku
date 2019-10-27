@@ -7,10 +7,18 @@ class Solver
   def solution
     until @puzzle.solved
       (0..80).each do |cell|
+        next if cell_has_value(@puzzle.get(cell))
+
         @heuristics.each { |heuristic| heuristic.execute(@puzzle, cell) }
       end
     end
 
     @puzzle.current
+  end
+
+  private
+
+  def cell_has_value(cell_value)
+    !!Integer(cell_value, exception: false)
   end
 end
