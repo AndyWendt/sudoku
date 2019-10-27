@@ -18,9 +18,7 @@ class Solver
   end
 
   def row_values(cell)
-    @puzzle.slice(0, 9).chars
-        .reject {|character| character == '.' }
-        .map{|character| character.to_i }.sort
+    retrieve_cell_values(row_cell_locations(cell))
   end
 
   def column_values(cell)
@@ -56,6 +54,19 @@ class Solver
 
   def area_cell_locations(cell)
     [cell+1, cell+2, cell+9, cell+10, cell+11, cell+18, cell+19, cell+20]
+  end
+
+  def row_cell_locations(cell)
+    range = (0..cell).to_a.reverse
+    start_of_line = range.detect{ |x| x % 9 == 0 }
+
+    unless (start_of_line)
+      start_of_line = 0
+    end
+
+    indexes = (start_of_line..(start_of_line+8)).to_a
+    indexes.delete(cell)
+    indexes
   end
 
   def retrieve_cell_values(locations)

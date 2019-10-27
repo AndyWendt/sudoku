@@ -41,8 +41,11 @@ describe Solver do
 
   describe 'cell row values' do
     let(:cell_zero_row_values) {[1,2,6,7]}
+    let(:cell_twenty_one_row_values) {[1,4,5,9]}
+
     it 'returns the values for a row' do
       expect(Solver.new(puzzle).row_values(0)).to eq(cell_zero_row_values)
+      expect(Solver.new(puzzle).row_values(21)).to eq(cell_twenty_one_row_values)
     end
   end
 
