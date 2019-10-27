@@ -1,6 +1,6 @@
 class Solver
   def initialize(puzzle, puzzle_cell_intelligence)
-    @original_puzzle = puzzle.generate
+    @original_puzzle = puzzle
     @puzzle = @original_puzzle
     @puzzle_cell_intelligence = puzzle_cell_intelligence
   end
@@ -22,9 +22,5 @@ class Solver
     end
 
     @puzzle
-  end
-
-  def solvable
-    true
   end
 end
