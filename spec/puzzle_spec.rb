@@ -18,7 +18,6 @@ describe Puzzle do
   end
 
   it 'sets values on the current puzzle' do
-    expect(subject.current.length).to eq(81)
     subject.set(1, 5)
     subject.set(79, 6)
     expect(subject.current).to eq(modified_puzzle_string)
@@ -26,5 +25,10 @@ describe Puzzle do
 
   it 'determines if it is solved' do
     expect(Puzzle.new(solved_puzzle_string).solved).to eq(true)
+  end
+
+  it 'retrieves values from the puzzle' do
+    expect(subject.get(0)).to eq(original_puzzle_string[0])
+    expect(subject.get(80)).to eq(original_puzzle_string[80])
   end
 end

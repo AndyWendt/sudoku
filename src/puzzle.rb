@@ -6,6 +6,10 @@ class Puzzle
     @current = @original
   end
 
+  def get(position)
+    current[position]
+  end
+
   def set(position, value)
     current[position] = value.to_s
   end
