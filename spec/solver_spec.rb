@@ -48,8 +48,11 @@ describe Solver do
 
   describe 'column values' do
     let(:cell_zero_column_values) {[1,6,7,8]}
+    let(:cell_thirty_six_column_values) { cell_zero_column_values }
+
     it 'returns the values for a column' do
       expect(Solver.new(puzzle).column_values(0)).to eq(cell_zero_column_values)
+      expect(Solver.new(puzzle).column_values(36)).to eq(cell_thirty_six_column_values)
     end
   end
 

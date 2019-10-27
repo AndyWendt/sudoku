@@ -38,12 +38,19 @@ class Solver
   private
 
   def column_cell_locations(cell)
-    start_cell = cell
+    up_cell = cell
+    down_cell = cell
     increment = 9
     cells = []
-    while (start_cell += increment) <= 80
-      cells.push(start_cell)
+
+    while (up_cell += increment) <= 80
+      cells.push(up_cell)
     end
+
+    while (down_cell -= increment) >= 0
+      cells.push(down_cell)
+    end
+
     cells
   end
 
