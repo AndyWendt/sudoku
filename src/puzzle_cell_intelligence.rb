@@ -1,12 +1,11 @@
 class PuzzleCellIntelligence
-  attr_accessor :puzzle
-
-  def initialize(helper)
+  def initialize(puzzle, helper)
+    @puzzle = puzzle
     @helper = helper
   end
 
   def potential_cell_values(cell)
-    cell_value = Integer(@puzzle.slice(cell), exception: false)
+    cell_value = Integer(@puzzle.get(cell), exception: false)
     return [] if cell_value
     (1..9).to_a - combined_values(cell)
   end
@@ -78,7 +77,7 @@ class PuzzleCellIntelligence
   end
 
   def retrieve_cell_values(locations)
-    locations.map {|location| @puzzle[location] }
+    locations.map {|location| @puzzle.get(location) }
         .reject {|character| character == '.' }
         .map{|character| character.to_i }
         .sort
