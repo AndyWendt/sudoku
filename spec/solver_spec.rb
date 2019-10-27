@@ -21,7 +21,7 @@ def run_puzzles(puzzle)
   puzzle = Puzzle.new(puzzle_string)
   pci = PuzzleCellIntelligence.new( Helper.new)
   heuristics = [
-      InconsistencyInsufficiencyHeuristic.new(puzzle, pci)
+      InconsistencyInsufficiencyHeuristic.new(pci)
   ]
 
   solver = Solver.new(puzzle, heuristics)

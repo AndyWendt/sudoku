@@ -7,7 +7,7 @@ class Solver
   def solution
     until @puzzle.solved
       (0..80).each do |cell|
-        @heuristics.each { |heuristic| heuristic.execute(cell) }
+        @heuristics.each { |heuristic| heuristic.execute(@puzzle, cell) }
       end
     end
 
