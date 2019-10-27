@@ -1,14 +1,16 @@
 class PuzzleCellIntelligence
-  def initialize(puzzle, helper)
-    @puzzle = puzzle
+  def initialize(helper)
     @helper = helper
   end
 
-  def potential_cell_values(cell)
+  def potential_cell_values(puzzle, cell)
+    @puzzle = puzzle
     cell_value = Integer(@puzzle.get(cell), exception: false)
     return [] if cell_value
     (1..9).to_a - combined_values(cell)
   end
+
+  private
 
   def row_values(cell)
     retrieve_cell_values(row_cell_locations(cell))
@@ -25,8 +27,6 @@ class PuzzleCellIntelligence
   def combined_values(cell)
     row_values(cell) | column_values(cell) | area_values(cell)
   end
-
-  private
 
   def column_cell_locations(cell)
     up_cell = cell
