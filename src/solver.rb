@@ -55,12 +55,14 @@ class Solver
 
   def determine_base_cell_for_area(cell)
     base_cells = [0,3,6,27,30,33,54,57,60]
-    @helper.find_next_lowest(cell, base_cells)
+    baseline_cell = @helper.find_home_row_cell(cell)
+    @helper.find_next_lowest(baseline_cell, base_cells)
   end
 
   def area_cell_locations(cell)
     base_cell = determine_base_cell_for_area(cell)
     [
+        base_cell,
         base_cell+1,
         base_cell+2,
         base_cell+9,

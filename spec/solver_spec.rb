@@ -63,10 +63,12 @@ describe Solver do
 
   describe 'area values' do
     let(:cell_zero_area_values) {[1,6,8,9]}
+    let(:cell_40_area_values) {[1,2,3,6]}
     let(:cell_eighty_area_values) {[3,4,6,7]}
 
     it 'returns the values for an area' do
       expect(subject.area_values(0)).to eq(cell_zero_area_values)
+      expect(subject.area_values(40)).to eq(cell_40_area_values)
       expect(subject.area_values(80)).to eq(cell_eighty_area_values)
     end
   end
