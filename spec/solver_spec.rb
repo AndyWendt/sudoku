@@ -30,3 +30,4 @@ describe Solver do
       solvable_puzzles.each { |puzzle| run_puzzles(puzzle) }
     end
   end
+end
