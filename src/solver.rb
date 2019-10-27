@@ -1,10 +1,27 @@
 class Solver
-  def initialize(puzzle)
-    @puzzle = puzzle.generate
+  def initialize(puzzle, puzzle_cell_intelligence)
+    @original_puzzle = puzzle.generate
+    @puzzle = @original_puzzle
+    @puzzle_cell_intelligence = puzzle_cell_intelligence
   end
 
   def solution
-    '435269781682571493197834562826195347374682915951743628519326874248957136763418259'
+    solved = false
+    length = @puzzle.length
+
+    until solved
+      for cell in 0..(length-1)
+        @puzzle_cell_intelligence.puzzle = @puzzle
+        potential_values = @puzzle_cell_intelligence.potential_cell_values(cell)
+        if potential_values.length == 1
+          @puzzle[cell] = potential_values[0].to_s
+        end
+      end
+
+      solved = !@puzzle.include?('.')
+    end
+
+    @puzzle
   end
 
   def solvable
