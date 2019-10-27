@@ -16,7 +16,9 @@ describe Helper do
   end
 
   it 'find values in the range but between those already present' do
-    expect(Helper.find_next_lowest(58, values)).to eq(57)
+    expect(Helper.find_next_lowest(1, values)).to eq(0)
     expect(Helper.find_next_lowest(7, values)).to eq(6)
+    expect(Helper.find_next_lowest(58, values)).to eq(57)
+    expect(Helper.find_next_lowest(56, values)).to eq(54)
   end
 end
