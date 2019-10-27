@@ -27,4 +27,10 @@ class Helper
       middle_index = (length / 2) + lower_index
     end
   end
+
+  def find_home_row_cell(cell)
+    ranges = (0..8).to_a + (27..35).to_a + (54..62).to_a
+    cell -= 9 until ranges.include?(cell)
+    cell
+  end
 end
