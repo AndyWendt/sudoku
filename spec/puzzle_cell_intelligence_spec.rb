@@ -9,12 +9,12 @@ describe PuzzleCellIntelligence do
   subject { PuzzleCellIntelligence.new(puzzle, Helper.new) }
 
   describe 'possible cell values' do
-    let(:cell_three_potential_cell_values) {[2]}
+    let(:cell_three_potential_cell_values) {[]}
     let(:cell_zero_potential_cell_values) {[3,4,5]}
     let(:cell_forty_potential_cell_values) {[8]}
     let(:cell_eighty_potential_cell_values) {[2,5,9]}
 
-    it 'returns the cell value if it is numeric' do
+    it 'returns an empty cell value if it is already set on the puzzle' do
       expect(subject.potential_cell_values(3)).to eq(cell_three_potential_cell_values)
     end
 

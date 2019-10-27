@@ -6,7 +6,7 @@ class PuzzleCellIntelligence
 
   def potential_cell_values(cell)
     cell_value = Integer(@puzzle.slice(cell), exception: false)
-    return [cell_value] if cell_value
+    return [] if cell_value
     (1..9).to_a - combined_values(cell)
   end
 
