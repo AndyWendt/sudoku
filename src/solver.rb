@@ -24,7 +24,11 @@ class Solver
   end
 
   def column_values(cell)
-    [1,6,7,8]
+    column_cell_locations(cell)
+      .map {|location| @puzzle[location] }
+      .reject {|character| character == '.' }
+      .map{|character| character.to_i }
+      .sort
   end
 
   def area_values(cell)
@@ -33,5 +37,17 @@ class Solver
 
   def combined_values(cell)
     row_values(cell) | column_values(cell) | area_values(cell)
+  end
+
+  private
+
+  def column_cell_locations(cell)
+    start_cell = cell
+    increment = 9
+    cells = []
+    while (start_cell += increment) <= 80
+      cells.push(start_cell)
+    end
+    cells
   end
 end
