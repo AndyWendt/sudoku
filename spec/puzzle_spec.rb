@@ -9,4 +9,9 @@ describe Puzzle do
     expect(subject.original.length).to eq(81)
     expect(subject.original).to eq(original_puzzle_string)
   end
+
+  it 'returns the current puzzle string' do
+    expect(subject.current.length).to eq(81)
+    expect(subject.current).to eq(original_puzzle_string)
+  end
 end
