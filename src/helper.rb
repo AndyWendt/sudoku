@@ -1,5 +1,5 @@
 class Helper
-  def self.find_next_lowest(value, array)
+  def find_next_lowest(value, array)
     upper_index = array.length
     middle_index = upper_index / 2
     lower_index = 0
