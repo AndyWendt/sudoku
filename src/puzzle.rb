@@ -9,4 +9,8 @@ class Puzzle
   def set(position, value)
     current[position] = value.to_s
   end
+
+  def solved
+    !current.include?('.')
+  end
 end
