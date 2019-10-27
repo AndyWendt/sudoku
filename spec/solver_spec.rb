@@ -4,6 +4,7 @@ require 'yaml'
 require './src/solver'
 require './src/helper'
 require './src/puzzle_cell_intelligence'
+require './src/puzzle'
 
 def run_puzzles(puzzle)
   puzzle_string = puzzle['start']
@@ -16,14 +17,16 @@ def run_puzzles(puzzle)
     expect(value).to eq(solution[index])
   end
 
-  solver = Solver.new(puzzle_string, PuzzleCellIntelligence.new(Helper.new))
+  puzzle = Puzzle.new(puzzle_string)
+  solver = Solver.new(puzzle, PuzzleCellIntelligence.new(puzzle, Helper.new))
   expect(solver.solution).to eq(solution)
 end
 
 describe Solver do
-  let(:solvable_puzzles) {YAML.load_file('./spec/fixtures/easy-puzzles.yml')}
+  describe "easy puzzles" do
+    let(:solvable_puzzles) {YAML.load_file('./spec/fixtures/easy-puzzles.yml')}
 
-  it 'solves a puzzle' do
-    solvable_puzzles.each { |puzzle| run_puzzles(puzzle) }
+    it 'solves the puzzles' do
+      solvable_puzzles.each { |puzzle| run_puzzles(puzzle) }
+    end
   end
-end
