@@ -7,6 +7,7 @@ class PuzzleCellIntelligence
     @puzzle = puzzle
     cell_value = Integer(@puzzle.get(cell), exception: false)
     return [] if cell_value
+
     (1..9).to_a - combined_values(cell)
   end
 
