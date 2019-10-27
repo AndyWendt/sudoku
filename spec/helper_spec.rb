@@ -20,5 +20,7 @@ describe Helper do
     expect(Helper.find_next_lowest(7, values)).to eq(6)
     expect(Helper.find_next_lowest(58, values)).to eq(57)
     expect(Helper.find_next_lowest(56, values)).to eq(54)
+    expect(Helper.find_next_lowest(62, values)).to eq(60)
+    expect(Helper.find_next_lowest(79, values)).to eq(60)
   end
 end

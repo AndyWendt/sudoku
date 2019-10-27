@@ -10,6 +10,7 @@ class Helper
       next_lower_value = array[middle_index - 1]
       return middle_value if middle_value == value ||
           (upper_index - lower_index) < 1 ||
+          next_higher_value == nil ||
           (next_higher_value > value && next_lower_value < value && middle_value < value)
 
       # lower
