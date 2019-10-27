@@ -5,4 +5,8 @@ class Puzzle
     @original = puzzle
     @current = @original
   end
+
+  def set(position, value)
+    current[position] = value.to_s
+  end
 end
