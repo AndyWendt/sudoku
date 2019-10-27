@@ -1,6 +1,7 @@
 class PuzzleCellIntelligence
-  def initialize(puzzle, helper)
-    @puzzle = puzzle.generate
+  attr_accessor :puzzle
+
+  def initialize(helper)
     @helper = helper
   end
 

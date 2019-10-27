@@ -6,7 +6,17 @@ require './src/helper'
 describe PuzzleCellIntelligence do
   let(:puzzle) {OpenStruct.new(generate: puzzle_string)}
   let(:puzzle_string) { '...26.7.168..7..9.19...45..82.1...4...46.29...5...3.28..93...74.4..5..367.3.18...' }
-  subject { PuzzleCellIntelligence.new(puzzle, Helper.new) }
+  let(:fake_puzzle) {'foobar'}
+  subject do
+    pci = PuzzleCellIntelligence.new(Helper.new)
+    pci.puzzle = puzzle_string
+    pci
+  end
+
+  it 'allows you to set the puzzle' do
+    subject.puzzle = fake_puzzle
+    expect(subject.puzzle).to eq(fake_puzzle)
+  end
 
   describe 'possible cell values' do
     let(:cell_three_potential_cell_values) {[]}
