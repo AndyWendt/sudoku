@@ -1,6 +1,7 @@
 class Solver
-  def initialize(puzzle)
+  def initialize(puzzle, helper)
     @puzzle = puzzle.generate
+    @helper = helper
   end
 
   def solution
@@ -52,8 +53,23 @@ class Solver
     cells
   end
 
+  def determine_base_cell_for_area(cell)
+    base_cells = [0,3,6,27,30,33,54,57,60]
+    @helper.find_next_lowest(cell, base_cells)
+  end
+
   def area_cell_locations(cell)
-    [cell+1, cell+2, cell+9, cell+10, cell+11, cell+18, cell+19, cell+20]
+    base_cell = determine_base_cell_for_area(cell)
+    [
+        base_cell+1,
+        base_cell+2,
+        base_cell+9,
+        base_cell+10,
+        base_cell+11,
+        base_cell+18,
+        base_cell+19,
+        base_cell+20,
+    ]
   end
 
   def row_cell_locations(cell)
