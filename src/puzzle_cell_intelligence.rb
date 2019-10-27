@@ -6,8 +6,8 @@ class PuzzleCellIntelligence
 
   def potential_cell_values(cell)
     cell_value = Integer(@puzzle.slice(cell), exception: false)
-    return (1..9).to_a - combined_values(cell) if cell == 0
-    [cell_value]
+    return [cell_value] if cell_value
+    (1..9).to_a - combined_values(cell)
   end
 
   def row_values(cell)
