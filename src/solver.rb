@@ -1,16 +1,13 @@
 class Solver
-  def initialize(puzzle, puzzle_cell_intelligence)
+  def initialize(puzzle, heuristics)
     @puzzle = puzzle
-    @puzzle_cell_intelligence = puzzle_cell_intelligence
+    @heuristics = heuristics
   end
 
   def solution
     until @puzzle.solved
       (0..80).each do |cell|
-        potential_values = @puzzle_cell_intelligence.potential_cell_values(cell)
-        if potential_values.length == 1
-          @puzzle.set(cell, potential_values.first.to_s)
-        end
+        @heuristics.each { |heuristic| heuristic.execute(cell) }
       end
     end
 

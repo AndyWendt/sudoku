@@ -5,6 +5,7 @@ require './src/solver'
 require './src/helper'
 require './src/puzzle_cell_intelligence'
 require './src/puzzle'
+require './src/inconsistency_insufficiency_heuristic'
 
 def run_puzzles(puzzle)
   puzzle_string = puzzle['start']
@@ -18,7 +19,12 @@ def run_puzzles(puzzle)
   end
 
   puzzle = Puzzle.new(puzzle_string)
-  solver = Solver.new(puzzle, PuzzleCellIntelligence.new(puzzle, Helper.new))
+  pci = PuzzleCellIntelligence.new(puzzle, Helper.new)
+  heuristics = [
+      InconsistencyInsufficiencyHeuristic.new(puzzle, pci)
+  ]
+
+  solver = Solver.new(puzzle, heuristics)
   expect(solver.solution).to eq(solution)
 end
 
