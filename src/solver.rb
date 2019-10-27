@@ -1,7 +1,6 @@
 class Solver
-  def initialize(puzzle, helper)
+  def initialize(puzzle)
     @puzzle = puzzle.generate
-    @helper = helper
   end
 
   def solution
