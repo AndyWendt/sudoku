@@ -37,8 +37,21 @@ describe Puzzle do
     expect(subject.hash).to eq(original_puzzle_hash)
   end
 
-  it 'compares a unique hash of the puzzle state with the original' do
-    subject.set(1,5)
-    expect(subject.changed).to eq(true)
+  describe 'puzzle changing' do
+    let(:changed_hash) { '14734fabe44a11026dcb1cad75f4db25' }
+    let(:different_hash) { 'f43216896bdeda42a6accd84a53da4c3' }
+
+    before do
+      subject.set(1, 5)
+    end
+
+    it 'compares a unique hash of the puzzle state with the original' do
+      expect(subject.changed).to eq(true)
+    end
+
+    it 'compares a unique hash to a base compare' do
+      expect(subject.hash).to eq(changed_hash)
+      expect(subject.changed(different_hash)).to eq(true)
+    end
   end
 end

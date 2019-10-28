@@ -21,11 +21,12 @@ class Puzzle
   end
 
   def hash(string = nil)
-    string ||= @current
+    string ||= current
     Digest::MD5.hexdigest(string)
   end
 
-  def changed
-    hash != hash(@original)
+  def changed(compare_hash = nil)
+    compare_hash ||= hash(original)
+    hash != compare_hash
   end
 end
