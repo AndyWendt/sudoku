@@ -31,15 +31,15 @@ describe PuzzleCellIntelligence do
   describe 'potential row cell values' do
     let(:cell_forty_potential_cell_row_values) {
       {
-          36 => [3],
-          37 => [1, 3, 7],
-          38 => [],
-          39 => [],
-          40 => [8],
-          41 => [],
-          42 => [],
-          43 => [1, 5],
-          44 => [3, 5, 7],
+        36 => [3],
+        37 => [1, 3, 7],
+        38 => [],
+        39 => [],
+        40 => [8],
+        41 => [],
+        42 => [],
+        43 => [1, 5],
+        44 => [3, 5, 7],
       }
     }
 
