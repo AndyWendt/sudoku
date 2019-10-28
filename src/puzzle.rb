@@ -1,3 +1,5 @@
+require 'digest'
+
 class Puzzle
   attr_reader :original, :current
 
@@ -16,5 +18,9 @@ class Puzzle
 
   def solved
     !current.include?('.')
+  end
+
+  def hash
+    Digest::MD5.hexdigest(@current)
   end
 end
