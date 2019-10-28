@@ -23,4 +23,8 @@ class Puzzle
   def hash
     Digest::MD5.hexdigest(@current)
   end
+
+  def changed
+    true
+  end
 end
