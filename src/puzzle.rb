@@ -4,8 +4,8 @@ class Puzzle
   attr_reader :original, :current
 
   def initialize(puzzle)
-    @original = puzzle
-    @current = @original
+    @original = puzzle.clone.freeze
+    @current = puzzle.clone
   end
 
   def get(position)
@@ -20,11 +20,12 @@ class Puzzle
     !current.include?('.')
   end
 
-  def hash
-    Digest::MD5.hexdigest(@current)
+  def hash(string = nil)
+    string ||= @current
+    Digest::MD5.hexdigest(string)
   end
 
   def changed
-    true
+    hash != hash(@original)
   end
 end

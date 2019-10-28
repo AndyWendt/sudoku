@@ -38,6 +38,7 @@ describe Puzzle do
   end
 
   it 'compares a unique hash of the puzzle state with the original' do
+    subject.set(1,5)
     expect(subject.changed).to eq(true)
   end
 end
