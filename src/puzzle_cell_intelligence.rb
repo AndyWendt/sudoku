@@ -13,11 +13,11 @@ class PuzzleCellIntelligence
 
   def potential_cell_row_values(puzzle, cell)
     @puzzle = puzzle
-    cell_locations = row_cell_locations(cell, false)
-    cell_locations.each_with_object({}) do |row_cell, row_cell_potential_values|
-      row_cell_potential_values[row_cell] = (potential_cell_values(puzzle, row_cell))
-      row_cell_potential_values
-    end
+    row_cell_locations(cell, false)
+      .each_with_object({}) do |row_cell, row_cell_potential_values|
+        row_cell_potential_values[row_cell] = (potential_cell_values(puzzle, row_cell))
+        row_cell_potential_values
+      end
   end
 
   private
@@ -88,8 +88,8 @@ class PuzzleCellIntelligence
 
   def retrieve_cell_values(locations)
     locations.map {|location| @puzzle.get(location) }
-        .reject {|character| character == '.' }
-        .map{|character| character.to_i }
-        .sort
+             .reject {|character| character == '.' }
+             .map{|character| character.to_i }
+             .sort
   end
 end
