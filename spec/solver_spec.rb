@@ -38,4 +38,12 @@ describe Solver do
       solvable_puzzles.each { |puzzle| run_puzzles(puzzle) }
     end
   end
+
+  # describe "intermediate puzzles" do
+  #   let(:solvable_puzzles) {YAML.load_file('./spec/fixtures/intermediate-puzzles.yml')}
+  #
+  #   it 'solves the puzzles' do
+  #     solvable_puzzles.each { |puzzle| run_puzzles(puzzle) }
+  #   end
+  # end
 end
