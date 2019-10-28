@@ -11,6 +11,15 @@ class PuzzleCellIntelligence
     (1..9).to_a - combined_values(cell)
   end
 
+  def potential_cell_row_values(puzzle, cell)
+    @puzzle = puzzle
+    cell_locations = row_cell_locations(cell, false)
+    cell_locations.reduce({}) do |row_cell_potential_values, row_cell|
+      row_cell_potential_values[row_cell] = (potential_cell_values(puzzle, row_cell))
+      row_cell_potential_values
+    end
+  end
+
   private
 
   def row_values(cell)
@@ -67,13 +76,13 @@ class PuzzleCellIntelligence
     ]
   end
 
-  def row_cell_locations(cell)
+  def row_cell_locations(cell, exclude_cell = true)
     range = (0..cell).to_a.reverse
     start_of_line = range.detect{ |x| x % 9 == 0 }
     start_of_line = 0 unless start_of_line
 
     indexes = (start_of_line..(start_of_line+8)).to_a
-    indexes.delete(cell)
+    indexes.delete(cell) if exclude_cell
     indexes
   end
 
