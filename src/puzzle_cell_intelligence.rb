@@ -11,7 +11,7 @@ class PuzzleCellIntelligence
     (1..9).to_a - combined_values(cell)
   end
 
-  def potential_cell_row_values(puzzle, cell)
+  def potential_row_cell_values(puzzle, cell)
     @puzzle = puzzle
     row_cell_locations(cell, false)
       .each_with_object({}) do |row_cell, row_cell_potential_values|
