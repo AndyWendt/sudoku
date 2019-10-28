@@ -49,12 +49,22 @@ describe PuzzleCellIntelligence do
   end
 
   describe 'potential column cell values' do
-    let(:cell_forty_potential_row_cell_values) {
+    let(:cell_forty_potential_column_cell_values) {
       {49=>[4, 9], 58=>[2], 67=>[], 76=>[], 40=>[8], 31=>[9], 22=>[3, 8], 13=>[], 4=>[]}
     }
 
     it 'returns the potential cell values' do
-      expect(subject.potential_column_cell_values(puzzle, 40)).to eq(cell_forty_potential_row_cell_values)
+      expect(subject.potential_column_cell_values(puzzle, 40)).to eq(cell_forty_potential_column_cell_values)
+    end
+  end
+
+  describe 'potential area cell values' do
+    let(:cell_forty_potential_area_cell_values) {
+      {30=>[], 31=>[9], 32=>[5, 7, 9], 39=>[], 40=>[8], 41=>[], 48=>[4, 7, 9], 49=>[4, 9], 50=>[]}
+    }
+
+    it 'returns the potential cell values' do
+      expect(subject.potential_area_cell_values(puzzle, 40)).to eq(cell_forty_potential_area_cell_values)
     end
   end
 end

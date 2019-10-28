@@ -21,6 +21,11 @@ class PuzzleCellIntelligence
     create_potential_cell_values(column_cell_locations(cell, false))
   end
 
+  def potential_area_cell_values(puzzle, cell)
+    @puzzle = puzzle
+    create_potential_cell_values(area_cell_locations(cell))
+  end
+
   private
 
   def create_potential_cell_values(cell_locations)
@@ -46,7 +51,7 @@ class PuzzleCellIntelligence
     row_values(cell) | column_values(cell) | area_values(cell)
   end
 
-  def column_cell_locations(cell, delete = true)
+  def column_cell_locations(cell, exclude_cell = true)
     up_cell = cell
     down_cell = cell
     increment = 9
@@ -60,7 +65,7 @@ class PuzzleCellIntelligence
       cells.push(down_cell)
     end
 
-    cells.push(cell) unless delete
+    cells.push(cell) unless exclude_cell
     cells
   end
 

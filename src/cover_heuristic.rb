@@ -9,11 +9,23 @@ class CoverHeuristic
     while @puzzle.changed(hash)
       hash = @puzzle.hash
       handle_row_cover_values(cell)
+      handle_column_cover_values(cell)
+      handle_column_area_values(cell)
       handle_single_potential_cell_values(cell)
     end
   end
 
   private
+
+  def handle_column_cover_values(cell)
+    cell_values = @puzzle_cell_intelligence.potential_column_cell_values(@puzzle, cell)
+    handle_cell_value_covers(cell_values)
+  end
+
+  def handle_column_area_values(cell)
+    cell_values = @puzzle_cell_intelligence.potential_area_cell_values(@puzzle, cell)
+    handle_cell_value_covers(cell_values)
+  end
 
   def handle_row_cover_values(cell)
     row_cell_values = @puzzle_cell_intelligence.potential_row_cell_values(@puzzle, cell)
