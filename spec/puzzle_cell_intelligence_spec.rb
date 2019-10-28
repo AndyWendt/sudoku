@@ -47,4 +47,14 @@ describe PuzzleCellIntelligence do
       expect(subject.potential_row_cell_values(puzzle, 40)).to eq(cell_forty_potential_row_cell_values)
     end
   end
+
+  describe 'potential column cell values' do
+    let(:cell_forty_potential_row_cell_values) {
+      {49=>[4, 9], 58=>[2], 67=>[], 76=>[], 40=>[8], 31=>[9], 22=>[3, 8], 13=>[], 4=>[]}
+    }
+
+    it 'returns the potential cell values' do
+      expect(subject.potential_column_cell_values(puzzle, 40)).to eq(cell_forty_potential_row_cell_values)
+    end
+  end
 end

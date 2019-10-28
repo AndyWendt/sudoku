@@ -13,14 +13,22 @@ class PuzzleCellIntelligence
 
   def potential_row_cell_values(puzzle, cell)
     @puzzle = puzzle
-    row_cell_locations(cell, false)
-      .each_with_object({}) do |row_cell, row_cell_potential_values|
-        row_cell_potential_values[row_cell] = (potential_cell_values(puzzle, row_cell))
-        row_cell_potential_values
-      end
+    create_potential_cell_values(row_cell_locations(cell, false))
+  end
+
+  def potential_column_cell_values(puzzle, cell)
+    @puzzle = puzzle
+    create_potential_cell_values(column_cell_locations(cell, false))
   end
 
   private
+
+  def create_potential_cell_values(cell_locations)
+    cell_locations.each_with_object({}) do |row_cell, row_cell_potential_values|
+      row_cell_potential_values[row_cell] = (potential_cell_values(@puzzle, row_cell))
+      row_cell_potential_values
+    end
+  end
 
   def row_values(cell)
     retrieve_cell_values(row_cell_locations(cell))
@@ -38,7 +46,7 @@ class PuzzleCellIntelligence
     row_values(cell) | column_values(cell) | area_values(cell)
   end
 
-  def column_cell_locations(cell)
+  def column_cell_locations(cell, delete = true)
     up_cell = cell
     down_cell = cell
     increment = 9
@@ -52,6 +60,7 @@ class PuzzleCellIntelligence
       cells.push(down_cell)
     end
 
+    cells.push(cell) unless delete
     cells
   end
 
