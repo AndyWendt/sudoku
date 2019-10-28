@@ -6,6 +6,7 @@ require './src/helper'
 require './src/puzzle_cell_intelligence'
 require './src/puzzle'
 require './src/inconsistency_insufficiency_heuristic'
+require './src/cover_heuristic'
 
 def run_puzzles(puzzle)
   puzzle_string = puzzle['start']
@@ -21,7 +22,8 @@ def run_puzzles(puzzle)
   puzzle = Puzzle.new(puzzle_string)
   pci = PuzzleCellIntelligence.new(Helper.new)
   heuristics = [
-      InconsistencyInsufficiencyHeuristic.new(pci)
+    InconsistencyInsufficiencyHeuristic.new(pci),
+    CoverHeuristic.new(pci)
   ]
 
   solver = Solver.new(puzzle, heuristics)
