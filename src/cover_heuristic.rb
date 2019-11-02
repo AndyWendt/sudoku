@@ -33,12 +33,13 @@ class CoverHeuristic
   end
 
   def handle_single_potential_cell_values(cell)
-    prcv = @puzzle_cell_intelligence.potential_row_cell_values(@puzzle, cell)
-    prcv.each_with_index do |(cell, potential_values), _|
-          next unless potential_values.length == 1
+    @puzzle_cell_intelligence
+      .potential_row_cell_values(@puzzle, cell)
+      .each_with_index do |(cell, potential_values), _|
+        next unless potential_values.length == 1
 
-          @puzzle.set(cell, potential_values.first.to_s)
-        end
+        @puzzle.set(cell, potential_values.first.to_s)
+      end
   end
 
   def handle_cell_value_covers(cell_values)
