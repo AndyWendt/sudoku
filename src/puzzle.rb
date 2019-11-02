@@ -34,6 +34,6 @@ class Puzzle
 
   def possibilities(cell, possibilities = nil)
     @cell_possibilities[cell] = possibilities if possibilities
-    @cell_possibilities[cell]
+    @cell_possibilities[cell] || []
   end
 end

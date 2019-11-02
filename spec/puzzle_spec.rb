@@ -74,5 +74,9 @@ describe Puzzle do
       subject.set(cell, 2)
       expect(subject.possibilities(cell)).to eq([])
     end
+
+    it 'returns an empty array when the cell has not been examined' do
+      expect(subject.possibilities(cell)).to eq([])
+    end
   end
 end
