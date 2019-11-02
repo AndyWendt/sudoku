@@ -57,13 +57,22 @@ describe Puzzle do
 
   describe "cell state" do
     let(:possibilities) { [2,3,5,7] }
+    let(:cell) { 1 }
 
     it 'adds and retrieves the potential values for a cell' do
+      result = subject.possibilities(cell, possibilities)
+      expect(result).to eq(possibilities)
+
+      result = subject.possibilities(cell)
+      expect(result).to eq(possibilities)
+    end
+
+    it 'unsets possible values when setting a value for a cell' do
       result = subject.possibilities(1, possibilities)
       expect(result).to eq(possibilities)
 
-      result = subject.possibilities(1)
-      expect(result).to eq(possibilities)
+      subject.set(cell, 2)
+      expect(subject.possibilities(cell)).to eq([])
     end
   end
 end

@@ -15,6 +15,7 @@ class Puzzle
 
   def set(position, value)
     current[position] = value.to_s
+    possibilities(position, [])
   end
 
   def solved
