@@ -6,6 +6,7 @@ class Puzzle
   def initialize(puzzle)
     @original = puzzle.clone.freeze
     @current = puzzle.clone
+    @cell_possibilities = {}
   end
 
   def get(position)
@@ -28,5 +29,10 @@ class Puzzle
   def changed(compare_hash = nil)
     compare_hash ||= hash(original)
     hash != compare_hash
+  end
+
+  def possibilities(cell, possibilities = nil)
+    @cell_possibilities[cell] = possibilities if possibilities
+    @cell_possibilities[cell]
   end
 end

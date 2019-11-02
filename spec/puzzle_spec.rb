@@ -54,4 +54,16 @@ describe Puzzle do
       expect(subject.changed(different_hash)).to eq(true)
     end
   end
+
+  describe "cell state" do
+    let(:possibilities) { [2,3,5,7] }
+
+    it 'adds and retrieves the potential values for a cell' do
+      result = subject.possibilities(1, possibilities)
+      expect(result).to eq(possibilities)
+
+      result = subject.possibilities(1)
+      expect(result).to eq(possibilities)
+    end
+  end
 end
