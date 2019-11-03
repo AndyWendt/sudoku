@@ -17,7 +17,7 @@ class Candidates
     (1..9).to_a - combined_values(cell)
   end
 
-  def grid_candidates(puzzle, cell)
+  def grid(puzzle, cell)
     grid_locations(cell).reduce({}) do |grid_candidates, cell_location|
       grid_candidates[cell_location] = cell(puzzle, cell_location)
       grid_candidates

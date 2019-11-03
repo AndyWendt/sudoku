@@ -20,7 +20,7 @@ class CrossHatchHeuristic
     candidate_counts = Hash[(1..9).to_a.map { |key| [key, []] }]
 
     candidate_counts = @puzzle_cell_intelligence
-      .grid_candidates(puzzle, cell)
+      .grid(puzzle, cell)
       .reduce(candidate_counts) do |counts, (cell_location, candidates)|
         candidates.each { |candidate_value| counts[candidate_value].push(cell_location) }
         counts

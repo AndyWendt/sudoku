@@ -43,7 +43,7 @@ describe Candidates do
     } }
 
     it 'returns the candidate cell values for a grid' do
-      expect(subject.grid_candidates(puzzle, 80)).to eq(grid_sixty_cell_candidates)
+      expect(subject.grid(puzzle, 80)).to eq(grid_sixty_cell_candidates)
     end
   end
 end
