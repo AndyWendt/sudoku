@@ -1,12 +1,11 @@
 require 'rspec'
 require 'ostruct'
 require 'yaml'
-require './src/solver'
-require './src/helper'
-require './src/puzzle_cell_intelligence'
-require './src/puzzle'
-require './src/inconsistency_insufficiency_heuristic'
-require './src/cover_heuristic'
+require_relative '../src/solver'
+require_relative '../src/helper'
+require_relative '../src/puzzle_cell_intelligence'
+require_relative '../src/puzzle'
+require_relative '../src/cross_hatch_heuristic'
 
 def run_puzzles(puzzle)
   puzzle_string = puzzle['start']
@@ -22,8 +21,7 @@ def run_puzzles(puzzle)
   puzzle = Puzzle.new(puzzle_string)
   pci = PuzzleCellIntelligence.new(Helper.new)
   heuristics = [
-    InconsistencyInsufficiencyHeuristic.new(pci),
-    CoverHeuristic.new(pci)
+    CrossHatchHeuristic.new(pci)
   ]
 
   solver = Solver.new(puzzle, heuristics)
