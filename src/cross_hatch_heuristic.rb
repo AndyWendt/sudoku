@@ -17,13 +17,11 @@ class CrossHatchHeuristic
   end
 
   def find_hidden_singles(cell, puzzle)
-    # Alternative: Hash[(1..9).to_a.each_with_object([]).to_a]
-    # https://stackoverflow.com/questions/21186669/how-to-initialize-a-hash-with-keys-from-an-array
-    candidate_counts = Hash[(1..9).to_a.product([[]])]
+    candidate_counts2 = Hash[(1..9).to_a.map { |key| [key, []] }]
 
-    @puzzle_cell_intelligence
+    candidate_counts = @puzzle_cell_intelligence
       .grid_candidates(puzzle, cell)
-      .reduce(candidate_counts) do |counts, (cell_location, candidates)|
+      .reduce(candidate_counts2) do |counts, (cell_location, candidates)|
         candidates.each { |candidate_value| counts[candidate_value].push(cell_location) }
         counts
       end
