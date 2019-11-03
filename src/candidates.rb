@@ -9,7 +9,7 @@ class Candidates
     new(Helper.new)
   end
 
-  def cell_candidates(puzzle, cell)
+  def cell(puzzle, cell)
     @puzzle = puzzle
     cell_value = Integer(@puzzle.get(cell), exception: false)
     return [] if cell_value
@@ -19,7 +19,7 @@ class Candidates
 
   def grid_candidates(puzzle, cell)
     grid_locations(cell).reduce({}) do |grid_candidates, cell_location|
-      grid_candidates[cell_location] = cell_candidates(puzzle, cell_location)
+      grid_candidates[cell_location] = cell(puzzle, cell_location)
       grid_candidates
     end
   end
@@ -28,7 +28,7 @@ class Candidates
 
   def create_cell_candidates(cell_locations)
     cell_locations.each_with_object({}) do |row_cell, row_cell_potential_values|
-      row_cell_potential_values[row_cell] = (cell_candidates(@puzzle, row_cell))
+      row_cell_potential_values[row_cell] = (cell(@puzzle, row_cell))
       row_cell_potential_values
     end
   end

@@ -18,13 +18,13 @@ describe Candidates do
     let(:cell_eighty_cell_candidates) {[2,5,9]}
 
     it 'returns an empty cell value if it is already set on the puzzle' do
-      expect(subject.cell_candidates(puzzle, 3)).to eq(cell_three_cell_candidates)
+      expect(subject.cell(puzzle, 3)).to eq(cell_three_cell_candidates)
     end
 
     it 'returns the potential cell values' do
-      expect(subject.cell_candidates(puzzle, 0)).to eq(cell_zero_cell_candidates)
-      expect(subject.cell_candidates(puzzle, 40)).to eq(cell_forty_cell_candidates)
-      expect(subject.cell_candidates(puzzle, 80)).to eq(cell_eighty_cell_candidates)
+      expect(subject.cell(puzzle, 0)).to eq(cell_zero_cell_candidates)
+      expect(subject.cell(puzzle, 40)).to eq(cell_forty_cell_candidates)
+      expect(subject.cell(puzzle, 80)).to eq(cell_eighty_cell_candidates)
     end
   end
 
