@@ -4,9 +4,9 @@ This glossary is intended to be the [Ubiquitous Language](https://martinfowler.c
 
 ## Definitions
 
-* **Block**: a 3x3 area in the puzzle that must contain the values 1 to 9
-* **Cell**: position and a value
+* **Cell**: comprised of a location and value
 * **Candidates**: potential cell values.
+* **Grid**: a 3x3 area in the puzzle that must contain the values 1 to 9
 * **Heuristic**: Algorithms for determining cell candidates 
-* **Location**: a location of a cell
-* **Position**: The location of a cell. Referenced either by its sequential position or by its X/Y coordinates. 
+* **Location**: the location of a cell referenced by its sequential position.
+* **Value**: The value of a given cell
