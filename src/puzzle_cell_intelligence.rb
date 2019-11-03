@@ -18,7 +18,7 @@ class PuzzleCellIntelligence
   end
 
   def grid_candidates(puzzle, cell)
-    area_cell_locations(cell).reduce({}) do |grid_candidates, cell_location|
+    grid_locations(cell).reduce({}) do |grid_candidates, cell_location|
       grid_candidates[cell_location] = cell_candidates(puzzle, cell_location)
       grid_candidates
     end
@@ -41,12 +41,12 @@ class PuzzleCellIntelligence
     retrieve_cell_values(column_cell_locations(cell))
   end
 
-  def area_values(cell)
-    retrieve_cell_values(area_cell_locations(cell))
+  def grid_values(cell)
+    retrieve_cell_values(grid_locations(cell))
   end
 
   def combined_values(cell)
-    row_values(cell) | column_values(cell) | area_values(cell)
+    row_values(cell) | column_values(cell) | grid_values(cell)
   end
 
   def column_cell_locations(cell, exclude_cell = true)
@@ -67,14 +67,14 @@ class PuzzleCellIntelligence
     cells
   end
 
-  def determine_base_cell_for_area(cell)
+  def base_cell_for_grid(cell)
     base_cells = [0,3,6,27,30,33,54,57,60]
     baseline_cell = @helper.find_home_row_cell(cell)
     @helper.find_next_lowest(baseline_cell, base_cells)
   end
 
-  def area_cell_locations(cell)
-    base_cell = determine_base_cell_for_area(cell)
+  def grid_locations(cell)
+    base_cell = base_cell_for_grid(cell)
     [
         base_cell,
         base_cell+1,
