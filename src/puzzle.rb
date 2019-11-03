@@ -6,7 +6,7 @@ class Puzzle
   def initialize(puzzle)
     @original = puzzle.clone.freeze
     @current = puzzle.clone
-    @cell_possibilities = {}
+    @cell_candidates = {}
   end
 
   def get(cell)
@@ -18,7 +18,7 @@ class Puzzle
 
   def set(cell, value)
     current[cell] = value.to_s
-    possibilities(cell, [])
+    candidates(cell, [])
   end
 
   def solved
@@ -35,14 +35,14 @@ class Puzzle
     hash != compare_hash
   end
 
-  def possibilities(cell, possibilities = nil)
-    @cell_possibilities[cell] = possibilities if possibilities
-    @cell_possibilities[cell] || []
+  def candidates(cell, candidates = nil)
+    @cell_candidates[cell] = candidates if candidates
+    @cell_candidates[cell] || []
   end
 
-  def add_possibilities(cell, possibilities_to_add)
-    combined = possibilities(cell) + possibilities_to_add
-    possibilities(cell, combined.uniq)
+  def add_candidates(cell, candidates_to_add)
+    combined = candidates(cell) + candidates_to_add
+    candidates(cell, combined.uniq)
   end
 
   private

@@ -62,34 +62,34 @@ describe Puzzle do
   describe "cell state" do
     let(:first_half) { [2,3] }
     let(:second_half) { [3,5,7] }
-    let(:possibilities) { [2,3,5,7] }
+    let(:candidates) { [2, 3, 5, 7] }
     let(:cell) { 1 }
 
     it 'adds and retrieves the potential values for a cell' do
-      result = subject.possibilities(cell, possibilities)
-      expect(result).to eq(possibilities)
+      result = subject.candidates(cell, candidates)
+      expect(result).to eq(candidates)
 
-      result = subject.possibilities(cell)
-      expect(result).to eq(possibilities)
+      result = subject.candidates(cell)
+      expect(result).to eq(candidates)
     end
 
     it 'unsets possible values when setting a value for a cell' do
-      result = subject.possibilities(1, possibilities)
-      expect(result).to eq(possibilities)
+      result = subject.candidates(1, candidates)
+      expect(result).to eq(candidates)
 
       subject.set(cell, 2)
-      expect(subject.possibilities(cell)).to eq([])
+      expect(subject.candidates(cell)).to eq([])
     end
 
     it 'returns an empty array when the cell has not been examined' do
-      expect(subject.possibilities(cell)).to eq([])
+      expect(subject.candidates(cell)).to eq([])
     end
 
-    it 'adds possibilities' do
-      subject.add_possibilities(cell, first_half)
-      subject.add_possibilities(cell, second_half)
-      result = subject.possibilities(cell)
-      expect(result).to eq(possibilities)
+    it 'adds candidates' do
+      subject.add_candidates(cell, first_half)
+      subject.add_candidates(cell, second_half)
+      result = subject.candidates(cell)
+      expect(result).to eq(candidates)
     end
   end
 end
