@@ -1,6 +1,6 @@
 require_relative 'helper'
 
-class PuzzleCellIntelligence
+class Candidates
   def initialize(helper)
     @helper = helper
   end

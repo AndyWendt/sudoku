@@ -1,15 +1,15 @@
 require 'rspec'
 require 'ostruct'
-require './src/puzzle_cell_intelligence'
+require './src/candidates'
 require './src/helper'
 require './src/puzzle'
 
-describe PuzzleCellIntelligence do
+describe Candidates do
   let(:puzzle) {OpenStruct.new(generate: puzzle_string)}
   let(:puzzle_string) { '...26.7.168..7..9.19...45..82.1...4...46.29...5...3.28..93...74.4..5..367.3.18...' }
   let(:fake_puzzle) {'foobar'}
   let(:puzzle) { Puzzle.new(puzzle_string) }
-  subject { PuzzleCellIntelligence.new(Helper.new) }
+  subject { Candidates.new(Helper.new) }
 
   describe 'cell candidates' do
     let(:cell_three_cell_candidates) {[]}

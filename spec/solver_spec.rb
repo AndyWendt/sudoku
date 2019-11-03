@@ -3,7 +3,7 @@ require 'ostruct'
 require 'yaml'
 require_relative '../src/solver'
 require_relative '../src/helper'
-require_relative '../src/puzzle_cell_intelligence'
+require_relative '../src/candidates'
 require_relative '../src/puzzle'
 require_relative '../src/cross_hatch_heuristic'
 
@@ -19,9 +19,9 @@ def run_puzzles(puzzle)
   end
 
   puzzle = Puzzle.new(puzzle_string)
-  pci = PuzzleCellIntelligence.new(Helper.new)
+  candidates = Candidates.new(Helper.new)
   heuristics = [
-    CrossHatchHeuristic.new(pci)
+    CrossHatchHeuristic.new(candidates)
   ]
 
   solver = Solver.new(puzzle, heuristics)

@@ -1,6 +1,6 @@
 require 'rspec'
 require_relative '../src/cross_hatch_heuristic'
-require_relative '../src/puzzle_cell_intelligence'
+require_relative '../src/candidates'
 require_relative '../src/puzzle'
 
 describe CrossHatchHeuristic do
@@ -8,9 +8,9 @@ describe CrossHatchHeuristic do
   let(:puzzle_string) { '...26.7.168..7..9.19...45..82.1...4...46.29...5...3.28..93...74.4..5..367.3.18...' }
   let(:puzzle) { Puzzle.new(puzzle_string) }
   let(:cell_candidates) { [4] }
-  let(:puzzle_cell_intelligence) { PuzzleCellIntelligence.instance }
+  let(:candidates_helper) { Candidates.instance }
 
-  subject { CrossHatchHeuristic.new(puzzle_cell_intelligence) }
+  subject { CrossHatchHeuristic.new(candidates_helper) }
 
   it 'finds hidden singles' do
     subject.execute(puzzle, 80)
