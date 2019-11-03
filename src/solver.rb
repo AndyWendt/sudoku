@@ -13,7 +13,7 @@ class Solver
       end
     end
 
-    @puzzle.current
+    @puzzle.modified
   end
 
   private
