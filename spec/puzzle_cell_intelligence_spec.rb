@@ -12,19 +12,19 @@ describe PuzzleCellIntelligence do
   subject { PuzzleCellIntelligence.new(Helper.new) }
 
   describe 'possible cell values' do
-    let(:cell_three_potential_cell_values) {[]}
-    let(:cell_zero_potential_cell_values) {[3,4,5]}
-    let(:cell_forty_potential_cell_values) {[8]}
-    let(:cell_eighty_potential_cell_values) {[2,5,9]}
+    let(:cell_three_cell_candidates) {[]}
+    let(:cell_zero_cell_candidates) {[3,4,5]}
+    let(:cell_forty_cell_candidates) {[8]}
+    let(:cell_eighty_cell_candidates) {[2,5,9]}
 
     it 'returns an empty cell value if it is already set on the puzzle' do
-      expect(subject.potential_cell_values(puzzle, 3)).to eq(cell_three_potential_cell_values)
+      expect(subject.cell_candidates(puzzle, 3)).to eq(cell_three_cell_candidates)
     end
 
     it 'returns the potential cell values' do
-      expect(subject.potential_cell_values(puzzle, 0)).to eq(cell_zero_potential_cell_values)
-      expect(subject.potential_cell_values(puzzle, 40)).to eq(cell_forty_potential_cell_values)
-      expect(subject.potential_cell_values(puzzle, 80)).to eq(cell_eighty_potential_cell_values)
+      expect(subject.cell_candidates(puzzle, 0)).to eq(cell_zero_cell_candidates)
+      expect(subject.cell_candidates(puzzle, 40)).to eq(cell_forty_cell_candidates)
+      expect(subject.cell_candidates(puzzle, 80)).to eq(cell_eighty_cell_candidates)
     end
   end
 

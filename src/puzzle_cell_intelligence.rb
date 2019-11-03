@@ -9,7 +9,7 @@ class PuzzleCellIntelligence
     new(Helper.new)
   end
 
-  def potential_cell_values(puzzle, cell)
+  def cell_candidates(puzzle, cell)
     @puzzle = puzzle
     cell_value = Integer(@puzzle.get(cell), exception: false)
     return [] if cell_value
@@ -19,24 +19,24 @@ class PuzzleCellIntelligence
 
   def potential_row_cell_values(puzzle, cell)
     @puzzle = puzzle
-    create_potential_cell_values(row_cell_locations(cell, false))
+    create_cell_candidates(row_cell_locations(cell, false))
   end
 
   def potential_column_cell_values(puzzle, cell)
     @puzzle = puzzle
-    create_potential_cell_values(column_cell_locations(cell, false))
+    create_cell_candidates(column_cell_locations(cell, false))
   end
 
   def potential_area_cell_values(puzzle, cell)
     @puzzle = puzzle
-    create_potential_cell_values(area_cell_locations(cell))
+    create_cell_candidates(area_cell_locations(cell))
   end
 
   private
 
-  def create_potential_cell_values(cell_locations)
+  def create_cell_candidates(cell_locations)
     cell_locations.each_with_object({}) do |row_cell, row_cell_potential_values|
-      row_cell_potential_values[row_cell] = (potential_cell_values(@puzzle, row_cell))
+      row_cell_potential_values[row_cell] = (cell_candidates(@puzzle, row_cell))
       row_cell_potential_values
     end
   end

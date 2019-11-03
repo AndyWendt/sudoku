@@ -11,7 +11,7 @@ class CoverHeuristic
       handle_row_cover_values(cell)
       handle_column_cover_values(cell)
       handle_column_area_values(cell)
-      handle_single_potential_cell_values(cell)
+      handle_single_cell_candidates(cell)
     end
   end
 
@@ -32,7 +32,7 @@ class CoverHeuristic
     handle_cell_value_covers(row_cell_values)
   end
 
-  def handle_single_potential_cell_values(cell)
+  def handle_single_cell_candidates(cell)
     @puzzle_cell_intelligence
       .potential_row_cell_values(@puzzle, cell)
       .each_with_index do |(cell, potential_values), _|
