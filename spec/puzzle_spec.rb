@@ -33,8 +33,8 @@ describe Puzzle do
   end
 
   it 'retrieves values from the puzzle' do
-    expect(subject.get(0)).to eq(nil)
-    expect(subject.get(80)).to eq(original_puzzle_string[80])
+    expect(subject.get(0)).to eq(original_puzzle_string[0].to_i)
+    expect(subject.get(80)).to eq(original_puzzle_string[80].to_i)
   end
 
   it 'returns a unique hash of the puzzle state' do
