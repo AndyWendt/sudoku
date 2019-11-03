@@ -21,6 +21,10 @@ describe CrossHatchHeuristic do
     expect(puzzle.get(79)).to eq(5)
     expect(puzzle.get(54)).to eq(5)
     expect(puzzle.get(0)).to eq(4)
+
+    expected = [1,8]
+    expect(puzzle.candidates(60)).to eq(expected)
+    expect(puzzle.candidates(69)).to eq(expected)
   end
 
   it 'naked singles' do

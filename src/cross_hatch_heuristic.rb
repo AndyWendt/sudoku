@@ -13,7 +13,7 @@ class CrossHatchHeuristic
   def find_naked_singles(cell, puzzle)
     candidates = @candidates.cell(puzzle, cell)
     puzzle.set(cell, candidates[0]) if candidates.length == 1
-    merge_candidates(puzzle.candidates(cell), candidates, puzzle, cell)
+    merge_candidates(candidates, puzzle, cell)
   end
 
   def find_hidden_singles(cell, puzzle)
@@ -31,9 +31,16 @@ class CrossHatchHeuristic
       next unless cells.length == 1
       puzzle.set(cells[0], candidate)
     end
+
+    @candidates
+      .grid(puzzle, cell)
+      .each do |location, candidates|
+        merge_candidates(candidates, puzzle, location)
+      end
   end
 
-  def merge_candidates(old, new, puzzle, cell)
+  def merge_candidates(new, puzzle, cell)
+    old = puzzle.candidates(cell)
     return puzzle.candidates(cell, new) if old.empty?
     (old - new).each { |candidate| old.delete(candidate) }
     puzzle.candidates(cell, old)
