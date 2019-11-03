@@ -17,7 +17,9 @@ class CrossHatchHeuristic
   end
 
   def find_hidden_singles(cell, puzzle)
-    candidate_counts = (1..9).each_with_object({}) { |candidate, hash| hash[candidate] = [] }
+    # Alternative: Hash[(1..9).to_a.each_with_object([]).to_a]
+    # https://stackoverflow.com/questions/21186669/how-to-initialize-a-hash-with-keys-from-an-array
+    candidate_counts = Hash[(1..9).to_a.product([[]])]
 
     @puzzle_cell_intelligence
       .grid_candidates(puzzle, cell)
