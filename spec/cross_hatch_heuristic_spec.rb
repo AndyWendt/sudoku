@@ -17,6 +17,8 @@ describe CrossHatchHeuristic do
     subject.execute(puzzle, 0)
     subject.execute(puzzle, 54)
     expect(puzzle.get(80)).to eq(9)
+    expect(puzzle.get(78)).to eq(2)
+    expect(puzzle.get(79)).to eq(5)
     expect(puzzle.get(54)).to eq(5)
     expect(puzzle.get(0)).to eq(4)
   end

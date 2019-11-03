@@ -1,6 +1,6 @@
 class CrossHatchHeuristic
   def initialize(puzzle_cell_intelligence)
-    @puzzle_cell_intelligence = puzzle_cell_intelligence
+    @candidates = puzzle_cell_intelligence
   end
 
   def execute(puzzle, cell)
@@ -11,7 +11,7 @@ class CrossHatchHeuristic
   private
 
   def find_naked_singles(cell, puzzle)
-    candidates = @puzzle_cell_intelligence.cell(puzzle, cell)
+    candidates = @candidates.cell(puzzle, cell)
     puzzle.set(cell, candidates[0]) if candidates.length == 1
     merge_candidates(puzzle.candidates(cell), candidates, puzzle, cell)
   end
@@ -19,10 +19,11 @@ class CrossHatchHeuristic
   def find_hidden_singles(cell, puzzle)
     candidate_counts = Hash[(1..9).to_a.map { |key| [key, []] }]
 
-    candidate_counts = @puzzle_cell_intelligence
+    candidate_counts = @candidates
       .grid(puzzle, cell)
-      .reduce(candidate_counts) do |counts, (cell_location, candidates)|
-        candidates.each { |candidate_value| counts[candidate_value].push(cell_location) }
+      .reduce(candidate_counts) do |counts, (location, candidates)|
+        puzzle.set(location, candidates[0]) if candidates.length == 1
+        candidates.each { |value| counts[value].push(location) } if candidates.length > 1
         counts
       end
 
