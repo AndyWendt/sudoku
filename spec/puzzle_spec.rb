@@ -8,6 +8,10 @@ describe Puzzle do
   let(:original_puzzle_hash) { 'ac7dd34e3e374f73949b0c74bceb6296' }
   subject { Puzzle.new(original_puzzle_string) }
 
+  it 'returns a blank cell as nil' do
+    expect(subject.get(1)).to eq(nil)
+  end
+
   it 'returns the original' do
     expect(subject.original.length).to eq(81)
     expect(subject.original).to eq(original_puzzle_string)
@@ -29,7 +33,7 @@ describe Puzzle do
   end
 
   it 'retrieves values from the puzzle' do
-    expect(subject.get(0)).to eq(original_puzzle_string[0])
+    expect(subject.get(0)).to eq(nil)
     expect(subject.get(80)).to eq(original_puzzle_string[80])
   end
 
