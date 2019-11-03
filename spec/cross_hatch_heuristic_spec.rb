@@ -40,5 +40,12 @@ describe CrossHatchHeuristic do
       expect(puzzle.get(54)).to eq(nil)
       expect(puzzle.candidates(54)).to eq([2])
     end
+
+    it 'removes candidates for the cell if they do not exist in the new candidates' do
+      puzzle.candidates(54, [2, 5, 3])
+      subject.execute(puzzle, 54)
+      expect(puzzle.get(54)).to eq(nil)
+      expect(puzzle.candidates(54)).to eq([2, 5])
+    end
   end
 end
