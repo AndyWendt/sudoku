@@ -1,6 +1,12 @@
+require_relative 'helper'
+
 class PuzzleCellIntelligence
   def initialize(helper)
     @helper = helper
+  end
+
+  def self.instance
+    new(Helper.new)
   end
 
   def potential_cell_values(puzzle, cell)
