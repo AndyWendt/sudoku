@@ -9,13 +9,13 @@ class Puzzle
     @cell_possibilities = {}
   end
 
-  def get(position)
-    current[position]
+  def get(cell)
+    current[cell]
   end
 
-  def set(position, value)
-    current[position] = value.to_s
-    possibilities(position, [])
+  def set(cell, value)
+    current[cell] = value.to_s
+    possibilities(cell, [])
   end
 
   def solved
@@ -39,6 +39,6 @@ class Puzzle
 
   def add_possibilities(cell, possibilities_to_add)
     combined = possibilities(cell) + possibilities_to_add
-    possibilities(cell, combined.uniq())
+    possibilities(cell, combined.uniq)
   end
 end
