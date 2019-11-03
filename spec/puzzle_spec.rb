@@ -56,6 +56,8 @@ describe Puzzle do
   end
 
   describe "cell state" do
+    let(:first_half) { [2,3] }
+    let(:second_half) { [3,5,7] }
     let(:possibilities) { [2,3,5,7] }
     let(:cell) { 1 }
 
@@ -77,6 +79,13 @@ describe Puzzle do
 
     it 'returns an empty array when the cell has not been examined' do
       expect(subject.possibilities(cell)).to eq([])
+    end
+
+    it 'adds possibilities' do
+      subject.add_possibilities(cell, first_half)
+      subject.add_possibilities(cell, second_half)
+      result = subject.possibilities(cell)
+      expect(result).to eq(possibilities)
     end
   end
 end

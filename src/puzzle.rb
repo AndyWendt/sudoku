@@ -36,4 +36,9 @@ class Puzzle
     @cell_possibilities[cell] = possibilities if possibilities
     @cell_possibilities[cell] || []
   end
+
+  def add_possibilities(cell, possibilities_to_add)
+    combined = possibilities(cell) + possibilities_to_add
+    possibilities(cell, combined.uniq())
+  end
 end
