@@ -4,6 +4,7 @@ This glossary is intended to be the [Ubiquitous Language](https://martinfowler.c
 
 ## Definitions
 
+* **Block**: a 3x3 area in the puzzle that must contain the values 1 to 9
 * **Cell**: A position on a Sudoku game.  
 * **Candidates**: potential cell values.
 * **Heuristic**: Algorithms for determining cell candidates 
