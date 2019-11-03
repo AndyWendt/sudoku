@@ -5,5 +5,6 @@ This glossary is intended to be the [Ubiquitous Language](https://martinfowler.c
 ## Definitions
 
 * **Cell**: A position on a Sudoku game.  
-* **Candidates**: potential cell values. 
+* **Candidates**: potential cell values.
+* **Heuristic**: Algorithms for determining cell candidates 
 * **Position**: The location of a cell. Referenced either by its sequential position or by its X/Y coordinates. 
