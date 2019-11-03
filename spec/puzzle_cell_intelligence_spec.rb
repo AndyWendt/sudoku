@@ -11,7 +11,7 @@ describe PuzzleCellIntelligence do
   let(:puzzle) { Puzzle.new(puzzle_string) }
   subject { PuzzleCellIntelligence.new(Helper.new) }
 
-  describe 'possible cell values' do
+  describe 'cell candidates' do
     let(:cell_three_cell_candidates) {[]}
     let(:cell_zero_cell_candidates) {[3,4,5]}
     let(:cell_forty_cell_candidates) {[8]}
@@ -25,6 +25,25 @@ describe PuzzleCellIntelligence do
       expect(subject.cell_candidates(puzzle, 0)).to eq(cell_zero_cell_candidates)
       expect(subject.cell_candidates(puzzle, 40)).to eq(cell_forty_cell_candidates)
       expect(subject.cell_candidates(puzzle, 80)).to eq(cell_eighty_cell_candidates)
+    end
+  end
+
+  describe 'candidates for grid' do
+    let(:grid_sixty_cell_candidates) {
+      {
+        60 => [1, 2, 8],
+        61 => [],
+        62 => [],
+        69 => [1, 2, 8],
+        70 => [],
+        71 => [],
+        78 => [2],
+        79 => [5],
+        80 => [2, 5, 9],
+    } }
+
+    it 'returns the candidate cell values for a grid' do
+      expect(subject.grid_candidates(puzzle, 80)).to eq(grid_sixty_cell_candidates)
     end
   end
 

@@ -17,6 +17,13 @@ class PuzzleCellIntelligence
     (1..9).to_a - combined_values(cell)
   end
 
+  def grid_candidates(puzzle, cell)
+    area_cell_locations(cell).reduce({}) do |grid_candidates, cell_location|
+      grid_candidates[cell_location] = cell_candidates(puzzle, cell_location)
+      grid_candidates
+    end
+  end
+
   def potential_row_cell_values(puzzle, cell)
     @puzzle = puzzle
     create_cell_candidates(row_cell_locations(cell, false))
