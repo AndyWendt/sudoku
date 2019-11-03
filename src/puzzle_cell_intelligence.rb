@@ -24,21 +24,6 @@ class PuzzleCellIntelligence
     end
   end
 
-  def potential_row_cell_values(puzzle, cell)
-    @puzzle = puzzle
-    create_cell_candidates(row_cell_locations(cell, false))
-  end
-
-  def potential_column_cell_values(puzzle, cell)
-    @puzzle = puzzle
-    create_cell_candidates(column_cell_locations(cell, false))
-  end
-
-  def potential_area_cell_values(puzzle, cell)
-    @puzzle = puzzle
-    create_cell_candidates(area_cell_locations(cell))
-  end
-
   private
 
   def create_cell_candidates(cell_locations)
