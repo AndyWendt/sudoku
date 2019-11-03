@@ -15,7 +15,9 @@ describe CrossHatchHeuristic do
   it 'finds hidden singles' do
     skip
     subject.execute(puzzle, 80)
+    subject.execute(puzzle, 0)
     expect(puzzle.get(80)).to eq(9)
+    expect(puzzle.get(0)).to eq(4)
   end
 
   it 'naked singles' do
@@ -23,5 +25,20 @@ describe CrossHatchHeuristic do
     subject.execute(puzzle, 7)
     expect(puzzle.get(1)).to eq(3)
     expect(puzzle.get(7)).to eq(8)
+  end
+
+  describe "candidates" do
+    it 'sets candidates for the cell if there is not a single value' do
+      subject.execute(puzzle, 54)
+      expect(puzzle.get(54)).to eq(nil)
+      expect(puzzle.candidates(54)).to eq([2,5])
+    end
+
+    it 'does not set the candidates if they are already set' do
+      puzzle.candidates(54, [2])
+      subject.execute(puzzle, 54)
+      expect(puzzle.get(54)).to eq(nil)
+      expect(puzzle.candidates(54)).to eq([2])
+    end
   end
 end

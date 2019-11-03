@@ -12,5 +12,6 @@ class CrossHatchHeuristic
   def find_naked_singles(cell, puzzle)
     candidates = @puzzle_cell_intelligence.potential_cell_values(puzzle, cell)
     puzzle.set(cell, candidates[0]) if candidates.length == 1
+    puzzle.candidates(cell, candidates) unless puzzle.candidates(cell)
   end
 end
