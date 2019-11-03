@@ -10,7 +10,10 @@ class Puzzle
   end
 
   def get(cell)
-    current[cell]
+    value = convert_to_int(current[cell])
+    return nil unless value
+
+    value
   end
 
   def set(cell, value)
@@ -40,5 +43,11 @@ class Puzzle
   def add_possibilities(cell, possibilities_to_add)
     combined = possibilities(cell) + possibilities_to_add
     possibilities(cell, combined.uniq)
+  end
+
+  private
+
+  def convert_to_int(value)
+    Integer(value, exception: false)
   end
 end
