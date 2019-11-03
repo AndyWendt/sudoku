@@ -1,32 +1,32 @@
 require 'digest'
 
 class Puzzle
-  attr_reader :original, :current
+  attr_reader :original, :modified
 
   def initialize(puzzle)
     @original = puzzle.clone.freeze
-    @current = puzzle.clone
+    @modified = puzzle.clone
     @cell_candidates = {}
   end
 
   def get(cell)
-    value = convert_to_int(current[cell])
+    value = convert_to_int(modified[cell])
     return nil unless value
 
     value
   end
 
   def set(cell, value)
-    current[cell] = value.to_s
+    modified[cell] = value.to_s
     candidates(cell, [])
   end
 
   def solved
-    !current.include?('.')
+    !modified.include?('.')
   end
 
   def hash(string = nil)
-    string ||= current
+    string ||= modified
     Digest::MD5.hexdigest(string)
   end
 
